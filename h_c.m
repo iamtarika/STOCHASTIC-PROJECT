@@ -7,7 +7,6 @@ p1 = 1 - p0;
 m(m < p0) = 0;
 m(m >= p0) = 1;
 mu = [0 0 0];
-%rho = [1 0 0; 0 1 0; 0 0 1];
 rho = [1 0.5 0.5; 0.5 1 0.5; 0.5 0.5 1];
 sigma = [1 0 0; 0 1 0; 0 0 1];
 for i = 1:nrcv
@@ -36,11 +35,6 @@ for i = 1:150
     r2 = R(2,:);
     r3 = R(3,:);
     likely = (r1*a(1) + r2*a(2) + r3*a(3) + (r1+r2)*a(4) + (r1+r3)*a(5) + (r2+r3)*a(6)) / w;
-    %likely = zeros(nmsg, 1);
-    %for j = 1:nmsg
-    %    r = R(j,:);
-    %    likely(j) = r(1)*a(1) + r(2)*a(2) + r(3)*a(3) + (r(1)+r(2))*a(4) + (r(1)+r(3))*a(5) + (r(2)+r(3))*a(6);
-    %end
     m_hat(likely >= thresh) = 0;
     m_hat(likely < thresh) = 1;
     pe(i) = (length(find(m ~= m_hat))/nmsg);
