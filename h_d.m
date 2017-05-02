@@ -36,11 +36,6 @@ for i = 1:150
     r2 = R(2,:);
     r3 = R(3,:);
     likely = r1*a(1) + r2*a(2) + r3*a(3) + (r1+r2)*a(4) + (r1+r3)*a(5) + (r2+r3)*a(6);
-    %likely = zeros(nmsg, 1);
-    %for j = 1:nmsg
-    %    r = R(j,:);
-    %    likely(j) = r(1)*a(1) + r(2)*a(2) + r(3)*a(3) + (r(1)+r(2))*a(4) + (r(1)+r(3))*a(5) + (r(2)+r(3))*a(6);
-    %end
     m_hat(likely >= thresh) = 1;
     m_hat(likely < thresh) = 0;
     pe(i) = (length(find(m ~= m_hat))/nmsg);
